@@ -22,11 +22,28 @@ class BaseModel:
         instance is created.
     """
 
-    def __init__(self):
-        """Initialize the BaseModel class"""
-        self.id = str(uuid.uuid4())
-        self.created_at = dt.now()
-        self.updated_at = dt.now()
+    def __init__(self, *args, **kwargs):
+        """
+        Initialize the BaseModel class
+
+        Arguments:
+            *args (any): unused
+
+            **kwargs (dict): obj attr key/value pair
+
+        """
+
+        if kwargs:
+            for key, value in kwargs.items():
+                if key == "__class__":
+                    continue
+                if key in ("created_at", "updated_at"):
+                    value = dt.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = dt.now()
+            self.updated_at = dt.now()
 
     def __str__(self):
         """Returns a formated string representation of an instance"""
@@ -38,7 +55,7 @@ class BaseModel:
         self.updated_at = dt.now()
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of __dict__"""
+        """Returns a dictionary representation of a given object"""
         obj_dict = self.__dict__.copy()
 
         obj_dict['__class__'] = self.__class__.__name__
