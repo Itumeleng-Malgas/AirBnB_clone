@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ This ...."""
 
+from models.base_model import BaseModel
 import json
 
 class FileStorage:
@@ -11,7 +12,7 @@ class FileStorage:
         return FileStorage.__objects
 
     def new(self, obj):
-        key = f"{obj.__class__.____name__}.{obj.id}"
+        key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -27,7 +28,12 @@ class FileStorage:
                 data = json.load(file)
                 for key, value in data.items():
                     class_name, obj_id = key.split('.')
-                    obj = models[class_name](**value)
+
+                    # use class name to determine which model class to use.
+                    model_class = globals()[class_name]
+                    obj = model_class.from_dict(value)
+
+                    key = f"{obj.__class__.__name__}.{obj.id}"
                     FileStorage.__objects[key] = obj
         except FileNotFoundError:
             pass
