@@ -70,6 +70,6 @@ class BaseModel:
 
     @classmethod
     def from_dict(cls, data):
-        """Create a new instance of the class using the data from the dictionary"""
+        """Create a new instance of the class with data from the dictionary"""
         instance = cls(**data)
         return instance

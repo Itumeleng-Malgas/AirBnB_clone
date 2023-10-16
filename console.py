@@ -12,6 +12,7 @@ import models
 import cmd
 import sys
 
+
 class HBNBCommand(cmd.Cmd):
     """ HBNBCommand class implementation, extends Cmd module """
     prompt = "> "
@@ -27,6 +28,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Take no action"""
         pass
+
 
 # Inintialize HBNBCommanf class
 console = HBNBCommand()
