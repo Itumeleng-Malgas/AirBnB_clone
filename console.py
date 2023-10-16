@@ -32,16 +32,21 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Creates a new instance of BaseModel"""
-
+        """ Creates a new instance """
         if not arg:
             print("** class name missing **")
-        elif arg not in [cls.__name__ for cls in BaseModel.__subclasses__()]:
-            print("** class doesn't exist **")
         else:
-            new_instance = BaseModel()
-            new_instance.save()
-            print(new_instance.id)
+            try:
+                classes = BaseModel.__subclasses__()
+                if arg in [cls.__name__ for cls in classes]:
+                    tcls = next(cls for cls in classes if cls.__name__ == arg)
+                    new_instance = tcls()
+                    new_instance.save()
+                    print(new_instance.id)
+                else:
+                    print("** class doesn't exist **")
+            except StopIteration:
+                print("** class doesn't exist **")
 
     def do_show(self, arg):
         """Prints the string representation of an instance"""
