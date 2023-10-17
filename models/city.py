@@ -4,8 +4,8 @@ This module defines the City class, which represents the city entity in the
 application.
 
 """
-import models
+from models.base_model import BaseModel
 
 
-class City(models.BaseModel):
+class City(BaseModel):
     pass

@@ -4,8 +4,9 @@ This module defines the State class, which represents the state entity in the
 application.
 
 """
-import models
+from models.base_model import BaseModel
 
 
-class State(models.BaseModel):
+
+class State(BaseModel):
     pass

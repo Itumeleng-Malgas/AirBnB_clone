@@ -4,8 +4,8 @@ This module defines the Place class, which represents a place entity in the
 application.
 
 """
-import models
+from models.base_model import BaseModel
 
 
-class Place(models.BaseModel):
+class Place(BaseModel):
     pass

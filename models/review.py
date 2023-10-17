@@ -4,8 +4,8 @@ This module defines the Review class, which represents the review entity in the
 application.
 
 """
-import models
+from models.base_model import BaseModel
 
 
-class Review(models.BaseModel):
+class Review(BaseModel):
     pass

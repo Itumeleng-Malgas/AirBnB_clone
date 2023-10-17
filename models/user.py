@@ -4,10 +4,10 @@ This module defines the User class, which represents a user entity in the
 application.
 
 """
-import models
+from models.base_model import BaseModel
 
 
-class User(models.BaseModel):
+class User(BaseModel):
     """
     Represents a User in the application.
 
