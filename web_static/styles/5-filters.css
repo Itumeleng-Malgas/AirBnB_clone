@@ -1,0 +1,64 @@
+.filters {
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	color: white;
+	height: 70px;
+	width: 100%;
+
+	position: relative; /* To position btn absolute */
+
+	display: flex;
+	align-items: center;
+} 
+
+.filters button {
+	font-size: 18px;
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	height: 48px;
+	width: 20%;
+	border: none;
+	border-radius: 4px;
+	margin-right: 30px;
+
+	position: absolute;
+	transform: translateY(-50%); /* Center vertically */
+	top: 50%;
+	right: 30px; /* 30px of the right border */
+
+	transition: opacity 0.3s;
+	opacity: 1;
+}
+
+/* Change opacity to 90% on hover */
+.filters button:hover {
+    opacity: 0.9;
+}
+
+.filters > div {
+    height: 100%;
+    width: 25%;
+	padding: 0 30px;
+	color: #484848;
+	
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+	
+}
+
+.filters .locations {
+	border-right: 1px solid #DDDDDD;
+}
+
+.filters .locations h3, .filters .amenities h3 {
+    font-weight: 600;
+    margin: 0;
+}
+
+.filters .locations h4, .filters .amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+}
+
