@@ -1,11 +1,7 @@
 /* styles/3-common.css */
 
-html {
-    box-sizing: border-box;
-}
-
 *, *:before, *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
 }
 
 body {
@@ -14,4 +10,9 @@ body {
 	color: #484848;
 	font-size: 14px;
 	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	min-height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
